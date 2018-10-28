@@ -6,9 +6,20 @@ class AddPhoto extends Component {
         this.handleSubmit = this.handleSubmit.bind(this)
     }
 
-    handleSubmit(){
+    handleSubmit(event){
         //disable default page reload
         event.preventDefault();
+        // Get data entered in input fields
+        const imageLink = event.target.elements.link.value;
+        const description = event.target.elements.description.value;
+        const post = {
+            id: Number(new Date()),
+            description: description,
+            imageLink: imageLink
+        }
+        if(description && imageLink) {
+            this.props.onAddPhoto(post)
+        }
     }
 
     render() {
@@ -17,8 +28,8 @@ class AddPhoto extends Component {
             <h1>Photowall</h1>
             <div className="form">
                     <form onSubmit={this.handleSubmit}>
-                        <input type="text" placeholder="Link" />
-                        <input type="text" placeholder="Description" />
+                        <input type="text" placeholder="Link" name="link"/>
+                        <input type="text" placeholder="Description" name="description"/>
                         <button>Post</button>
                     </form>
             </div>
