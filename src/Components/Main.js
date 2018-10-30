@@ -3,12 +3,13 @@ import Title from './Title';
 import PhotoWall from './PhotoWall';
 import AddPhoto from './AddPhoto';
 import {Route} from 'react-router-dom';
+import {removePost} from '../redux/actions';
 
 class Main extends Component {
     constructor() {
         // If extending to another class, call super to use 'this'
         super()
-            }
+    }
 
     // Render method should never do any asychronous requests
     render() {
@@ -16,16 +17,17 @@ class Main extends Component {
                     <Route exact path="/" render={()=>(
                         <div>
                             <Title title={'PhotoWall'} />
-                            <PhotoWall posts={this.props.posts}/>
+                            {/* Passing down all the props using ES6 spread */}
+                            <PhotoWall {...this.props}/>
                         </div>
                     )} />
                     <div>
-                        {/* <Route path="/AddPhoto" render= {({history}) =>(
+                        <Route path="/AddPhoto" render= {({history}) =>(
                             <AddPhoto onAddPhoto ={(addedPost) => {
-                                this.addPhoto(addedPost)
+                                
                                 history.push('/')
                             }}/>
-                        )} /> */}
+                        )} />
                     </div>
                </div>
     }
