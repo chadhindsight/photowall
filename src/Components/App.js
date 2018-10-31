@@ -1,7 +1,7 @@
 import Main from './Main'
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
-import {removePost} from '../redux/actions';
+import * as actions from '../redux/actions';
 import {withRouter} from 'react-router';
 function mapStateToProps(state) {
     return {
@@ -10,7 +10,7 @@ function mapStateToProps(state) {
 }
 // Used to provide the component access to action creators
 function mapDispatchToProps(dispatch) {
-    return bindActionCreators({removePost}, dispatch);
+    return bindActionCreators(actions, dispatch);
 }
 //connect the component that is going to recive our state from the store as props
 const App = withRouter(connect(mapStateToProps, mapDispatchToProps) (Main));

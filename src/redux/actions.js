@@ -2,7 +2,15 @@
 export function removePost(index) {
     return {
         type: 'REMOVE_POST',
-        index: index
+        index
+    }
+}
+
+export function addPost(post) {
+    // Take in a post that was submitted and use that as payload
+    return {
+        type: 'ADD_POST',
+        post
     }
 }
 
