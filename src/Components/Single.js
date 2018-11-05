@@ -12,7 +12,7 @@ class Single extends Component {
         console.log(post)
         return <div className='single-photo'> 
                     <Photo post={post}/>
-                    <Comments addComment={this.props.addComment} comments={comments}/>
+                    <Comments addComment={this.props.addComment} comments={comments} id={id}/>
                 </div>
     }
 }
