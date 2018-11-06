@@ -11,7 +11,15 @@ function Photo (props) {
                     <div className="button-container">
                     <button  onClick ={()=>{
                        props.removePost(props.index);
+                       props.history.push('/')
                     }}>Remove</button>
+                <Link className="button" to={`/single/${post.id}`}>
+                    <div className="comment-count">
+                        <div className="speech-bubble"> </div>
+                        {/* shows the length of comments array if array length is not zero */}
+                        {props.comments[post.Id] ? props.comments[post.Id].length : 0}
+                    </div>
+                </Link>
                     </div>
                 </figure>
     

@@ -1,3 +1,15 @@
+import {database} from '../database/config'
+
+export function startAddingPost(post) {
+    return (dispatch) => {
+        // update a firebase node with a key:value pair
+        return database.ref('posts').update({[post.id]: post}).then(()=>{
+            dispatch(addPost(post))
+        }).catch(error => {
+            console.log(error) 
+        })
+    } 
+}
 //When remove action is emited it tells us which index in the post array is to be removed
 export function removePost(index) {
     return {
@@ -14,10 +26,11 @@ export function addPost(post) {
     }
 }
 
-export function addComment(comment) {
+export function addComment(comment, postId) {
     return {
         type: 'ADD_COMMENT',
-        comment
+        comment,
+        postId
     }
 }
 //NB: action creators are just functions that return action
