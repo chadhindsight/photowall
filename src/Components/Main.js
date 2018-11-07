@@ -7,10 +7,9 @@ import {removePost} from '../redux/actions';
 import Single  from './Single';
 
 class Main extends Component {
-    constructor() {
-        // If extending to another class, call super to use 'this'
-        super()
-    }
+   componentDidMount() {
+       this.props.startLoadingPost()
+   }
 
     // Render method should never do any asychronous requests
     render() {
