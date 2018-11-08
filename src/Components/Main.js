@@ -9,6 +9,7 @@ import Single  from './Single';
 class Main extends Component {
    componentDidMount() {
        this.props.startLoadingPost()
+       this.props.startLoadingPost()
    }
 
     // Render method should never do any asychronous requests

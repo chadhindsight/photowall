@@ -16,9 +16,8 @@ export function startLoadingPost() {
             let posts = []
             snapshot.forEach((childSnapshot) => {
                 posts.push(childSnapshot.val())
-            }).catch(error => {
-                console.log(error)
             })
+
             dispatch(loadPosts(posts))
         })
     }
@@ -36,10 +35,27 @@ export function startRemovingPost(index, id) {
 export function startAddingComment(comment, postId){
     return (dispatch) => {
         return database.ref(`comments/${postId}`).push(comment).then(()=> {
-
+            dispatch(addComment(comment, postId))
         }).catch(error => {
             console.log(error)
         })
+    }
+}
+export function startLoadingComments() {
+    return dispatch => {
+        return database.ref('comments').once('value').then((snapshot) =>{
+            let comments = {}
+            snapshot.forEach(childSnapshot =>{
+                comments[childSnapshot.key] = Object.values(childSnapshot.value())
+            })
+            dispatch(LoadComments(comments))
+        })
+    }
+}
+export function LoadComments(comments) {
+    return {
+        type: 'LOAD_COMMENTS',
+        comments
     }
 }
 //When remove action is emited it tells us which index in the post array is to be removed

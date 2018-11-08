@@ -12,7 +12,7 @@ function PhotoWall(props) {
                     // sort in descending order
                     return y.id - x.id
                 })
-                .map((post, index) => <Photo key={index} post={post} {...props} index={index}/>)}
+                .map((post, index) => <Photo key={index} post={post} {...props} />)}
             </div> 
     </div>        
 }
