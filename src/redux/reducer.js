@@ -3,7 +3,7 @@ import {combineReducers} from 'redux';
 
  function comments(state ={}, action){
      switch(action.type) {
-        //[action.post] is not an array, but [action.comment] is an array
+        // [action.post] is not an array, but [action.comment] is an array
         case 'ADD_COMMENT': 
         
         if(!state[action.postId]){
@@ -24,11 +24,11 @@ function posts(state = _posts, action) {
         case 'ADD_POST': return [...state, action.post]
         case 'LOAD_POSTS': return action.posts
         case 'LOAD_COMMENTS': return action.comments
-        default: return state
+        default: return state 
     }
 }
 
 const rootReducer = combineReducers({posts, comments})
 
 export default rootReducer;
-// NB: when you emit an action it goes to every reducer, but it's only updated by the corresponding reducer.
+// NB: when you emit an action it goes to every reducer, but it's only updated by the corresponding reducer related to that action.
