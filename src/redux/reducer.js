@@ -31,4 +31,4 @@ function posts(state = _posts, action) {
 const rootReducer = combineReducers({posts, comments})
 
 export default rootReducer;
-// NB: when you emit an action it goes to every reducer, but it's only updated by the corresponding reducer related to that action.
+// NB: when you emit an action it goes to every reducer, but state is only updated by the corresponding reducer related to that action.

@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import Title from './Title';
 import PhotoWall from './PhotoWall';
 import AddPhoto from './AddPhoto';
 import {Route, Link} from 'react-router-dom';
